@@ -33,19 +33,14 @@
   "typings": "./dist/my-element.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.prod.json",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts",
     "clean": "shx rm -rf dist/ .*cache *.log",
-    "lint": "npm run lint:debug -- --config tslint.prod.json",
-    "lint:debug": "tslint --project tsconfig.json --format stylish",
-    "prepublishOnly": "npm run clean && npm run lint && npm run build",
     "test": "npm run clean && npm run lint && npm run ts",
     "ts": "tsc",
+    "prepublishOnly": "npm run clean && npm run lint && npm run build",
     "upgrade": "npm outdated --dev && npm update --dev && npm audit fix",
     "watch": "tsc --watch"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && tsc --noEmit"
-    }
   },
   "dependencies": {
     "lit-element": "^2.3.1",
@@ -53,11 +48,12 @@
     "tslib": "^1.11.1"
   },
   "devDependencies": {
-    "@reallyland/tsconfig": "^2.0.0",
-    "@reallyland/tslint-config": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
     "husky": "^4.2.3",
     "shx": "^0.3.2",
-    "tslint": "^6.1.1",
     "typescript": "^3.8.3"
   },
   "engines": {
