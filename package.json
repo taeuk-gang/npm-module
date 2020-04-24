@@ -1,0 +1,70 @@
+{
+  "name": "npm-module-template",
+  "version": "0.0.1",
+  "private": false,
+  "description": "npm upload test",
+  "keywords": [
+    "lit-element",
+    "lit-html",
+    "polymer",
+    "typescript",
+    "web-component",
+    "web-components"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "author": {
+    "name": "TAEUK KANG",
+    "email": "taeuk_kang@naver.com",
+    "url": "https://github.com/taeuk-gang"
+  },
+  "files": [
+    "dist/*.d.ts.map",
+    "dist/*.d.ts",
+    "dist/*.js.map",
+    "dist/*.js"
+  ],
+  "main": "./dist/my-element.js",
+  "module": "./dist/my-element.js",
+  "typings": "./dist/my-element.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.prod.json",
+    "clean": "shx rm -rf dist/ .*cache *.log",
+    "lint": "npm run lint:debug -- --config tslint.prod.json",
+    "lint:debug": "tslint --project tsconfig.json --format stylish",
+    "prepublishOnly": "npm run clean && npm run lint && npm run build",
+    "test": "npm run clean && npm run lint && npm run ts",
+    "ts": "tsc",
+    "upgrade": "npm outdated --dev && npm update --dev && npm audit fix",
+    "watch": "tsc --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && tsc --noEmit"
+    }
+  },
+  "dependencies": {
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "@reallyland/tsconfig": "^2.0.0",
+    "@reallyland/tslint-config": "^1.1.1",
+    "husky": "^4.2.3",
+    "shx": "^0.3.2",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
