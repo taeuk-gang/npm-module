@@ -42,6 +42,11 @@
     "upgrade": "npm outdated --dev && npm update --dev && npm audit fix",
     "watch": "tsc --watch"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && tsc"
+    }
+  },
   "dependencies": {
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
